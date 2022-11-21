@@ -242,6 +242,20 @@ ignore_errors = true
 module = "*.tests.*"
 ignore_errors = true
 
+[tool.py3arch.options]
+source = "gaphor"
+
+[tool.py3arch.rules]
+"*.tests.*" = [ "gaphor.*" ]
+"gaphor.core" = [
+    "gaphor.core,gaphor.abc,gaphor.action,gaphor.i18n,gaphor.transaction,gaphor.event",
+    "not gaphor"
+]
+"gaphor.diagram,gaphor.UML,gaphor.C4Model,gaphor.RAAML,gaphor.SysML" = [
+    "not gaphor.ui"
+]
+# "gaphor.UML" = [ "not gaphor.C4Model,gaphor.SysML,gaphor.RAAML"]
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
